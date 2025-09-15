@@ -16,6 +16,8 @@
   command: 
     cmd: "scripts/cargo-install-all.sh --validator-only {{ releases_dir }}/{{ release_label }}"
     chdir: "{{ git_clone_target }}/{{ repo_name }}"
+  environment:
+    PATH: "$HOME/.cargo/bin:$PATH"
   tags:
     - cli
     - cli.build

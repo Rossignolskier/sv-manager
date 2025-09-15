@@ -18,7 +18,7 @@ build_cli () {
   read -e -p "Which path to use for active_release link?: " -i "~/.local/share/solana/install/active_release" ACTIVE_RELEASE_DIR
  
   #DEBUG
-  echo $RELEASE_TYPE $CLONE_PATH $SOLANA_USER $RELEASE_DIR $ACTIVE_RELEASE_DIR
+  #echo $RELEASE_TYPE $CLONE_PATH $SOLANA_USER $RELEASE_DIR $ACTIVE_RELEASE_DIR
   #exit
 
   rm -rf sv_manager/
@@ -64,7 +64,7 @@ build_cli () {
   fi
 
 
-  ansible-playbook --connection=local --inventory ./inventory/$inventory --limit localhost  playbooks/pb_config.yaml $RELEASE $SOLANA_HOME --extra-vars "{ \
+  ansible-playbook --connection=local --inventory ./inventory/$inventory --limit localhost  playbooks/pb_install_validator.yaml --tags cli $RELEASE $SOLANA_HOME --extra-vars "{ \
   'git_clone_target':'$CLONE_PATH', \
   'releases_dir': '$RELEASE_DIR', \
   'active_release_dir': $ACTIVE_RELEASE_DIR, \
@@ -74,7 +74,7 @@ build_cli () {
 
   echo "### 'Uninstall ansible ###"
 
-  $pkg_manager remove ansible --yes
+  apt remove ansible --yes
 
 
 

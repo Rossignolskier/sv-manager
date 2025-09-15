@@ -33,7 +33,8 @@ build_cli () {
 
   echo "Downloading Solana validator manager version $1"
   #cmd="https://github.com/rossignolskier/sv-manager/archive/refs/tags/$1.zip"
-  cmd="https://github.com/Rossignolskier/sv-manager/archive/refs/heads/develop.zip"
+  #cmd="https://github.com/Rossignolskier/sv-manager/archive/refs/heads/develop.zip"
+  cmd="https://github.com/Rossignolskier/sv-manager/archive/refs/heads/rossi_updates.zip"
   echo "starting $cmd"
   curl -fsSL "$cmd" --output sv_manager.zip
   echo "Unpacking"

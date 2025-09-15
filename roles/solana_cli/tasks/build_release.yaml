@@ -1,0 +1,30 @@
+---
+- name: Create release folder
+  file:
+    state: directory
+    path: "{{ releases_dir }}"
+    owner: "{{ solana_user }}"
+    group: "{{ solana_user }}"
+  tags:
+    - cli
+    - cli.build
+
+- name: Build release from sources
+  become: true
+  become_user: "{{ solana_user }}"
+  become_flags: "-i"
+  command: 
+    cmd: "scripts/cargo-install-all.sh --validator-only {{ releases_dir }}/{{ release_label }}"
+    chdir: "{{ git_clone_target }}/{{ repo_name }}"
+  tags:
+    - cli
+    - cli.build
+
+- name: Set active release
+  file:
+    state: link
+    src: "{{ releases_dir }}/{{ release_label }}"
+    path: "{{ active_release_dir }}"
+  tags:
+    - cli
+    - cli.link

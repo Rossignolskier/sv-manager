@@ -9,6 +9,10 @@
     - cli
     - cli.packages
 
+- name: DEBUG
+  debug:
+    var: solana_home
+
 - name: Install rust
   command: "/usr/local/sbin/rustup-install.sh -y"
   args:

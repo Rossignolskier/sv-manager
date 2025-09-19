@@ -61,7 +61,7 @@ build_cli () {
 
   if [ $SOLANA_USER=="root" ]
   then
-    SOLANA_HOME="--extra-vars 'solana_home=/root'"
+    SOLANA_HOME="--extra-vars solana_home=/root"
   fi
 
 

@@ -24,6 +24,9 @@
     - cli.build
 
 - name: Set active release
+  become: true
+  become_user: "{{ solana_user }}"
+  become_flags: "-i"
   file:
     state: link
     src: "{{ releases_dir }}/{{ release_label }}"

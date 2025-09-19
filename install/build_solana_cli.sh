@@ -11,7 +11,7 @@ build_cli () {
 
   read -e -p "Please enter a type of release to build (agave, jito, paladin): " -i "agave" RELEASE_TYPE
   read -e -p "Which version you want to build? " CLI_VERSION
-  read -e -p "Please enter the full path where to clone repo: " -i "/tmp/" CLONE_PATH
+  read -e -p "Please enter the full path where to clone repo: " -i "~/" CLONE_PATH
 
   read -e -p "Which user is running the validator?: " -i "solana" SOLANA_USER
   read -e -p "Where to store binaries?: " -i "~/.local/share/solana/install/releases" RELEASE_DIR

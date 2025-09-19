@@ -41,7 +41,7 @@
 
 - name: Clone {{ repo_name }} repo
   git:
-    dest: "{{ git_clone_target }}/{{ repo_name }}"
+    dest: "{{ solana_home }}/{{ repo_name }}"
     force: true
     repo: "{{ git_url }}"
     version: "{{ tag }}"

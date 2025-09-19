@@ -13,11 +13,12 @@
   become: true
   become_user: "{{ solana_user }}"
   become_flags: "-i"
-  command: 
-    cmd: "scripts/cargo-install-all.sh --validator-only {{ releases_dir }}/{{ release_label }}"
-    chdir: "{{ git_clone_target }}/{{ repo_name }}"
-  environment:
-    PATH: "$HOME/.cargo/bin:$PATH"
+  shell: |
+    export PATH="$HOME/.cargo/bin:$PATH"
+    scripts/cargo-install-all.sh --validator-only {{ releases_dir }}/{{ release_label }}
+  args:
+    chdir: "{{ solana_home }}/{{ repo_name }}"
+    executable: /usr/bin/bash
   tags:
     - cli
     - cli.build

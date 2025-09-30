@@ -56,7 +56,7 @@ build_cli () {
 
   if [ ! -z $RELEASE_TYPE ]
   then
-    RELEASE="--extra-vars '$RELEASE_TYPE=true'"
+    RELEASE="--extra-vars '$RELEASE_TYPE=True'"
   fi
 
   if [ $SOLANA_USER = "root" ]

@@ -59,7 +59,7 @@ build_cli () {
     RELEASE="--extra-vars '$RELEASE_TYPE=true'"
   fi
 
-  if [ $SOLANA_USER=="root" ]
+  if [ $SOLANA_USER="root" ]
   then
     SOLANA_HOME="--extra-vars solana_home=/root"
   fi

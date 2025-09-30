@@ -64,6 +64,13 @@ build_cli () {
     SOLANA_HOME="--extra-vars solana_home=/root"
   fi
 
+echo --inventory ./inventory/$inventory --limit localhost  playbooks/pb_install_validator.yaml --tags cli $RELEASE $SOLANA_HOME --extra-vars "{ \
+  'git_clone_target':'$CLONE_PATH', \
+  'releases_dir': '$RELEASE_DIR', \
+  'active_release_dir': $ACTIVE_RELEASE_DIR, \
+  'cli_version': $CLI_VERSION, \
+  'solana_user': $SOLANA_USER \
+  }"
 
   ansible-playbook --connection=local --inventory ./inventory/$inventory --limit localhost  playbooks/pb_install_validator.yaml --tags cli $RELEASE $SOLANA_HOME --extra-vars "{ \
   'git_clone_target':'$CLONE_PATH', \
